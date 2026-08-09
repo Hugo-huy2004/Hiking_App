@@ -1,8 +1,3 @@
-const { getDefaultConfig } = require("expo/metro-config");
-const { withUniwindConfig } = require("uniwind/metro");
+const { getDefaultConfig } = require('expo/metro-config')
 
-const config = getDefaultConfig(__dirname);
-
-module.exports = withUniwindConfig(config, {
-  cssEntryFile: "./src/global.css",
-});
+module.exports = getDefaultConfig(__dirname)

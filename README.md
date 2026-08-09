@@ -1,46 +1,59 @@
-# Welcome to your HeroUI Native app 👋
+# M-Hike: Mobile Hiker Management App 🥾
 
-This is an [Expo](https://expo.dev) project preconfigured with
-[HeroUI Native](https://heroui.com/docs/native), [Uniwind](https://docs.uniwind.dev)
-(Tailwind CSS for React Native), and [Expo Router](https://docs.expo.dev/router/introduction)
-with a bottom-tab layout.
+M-Hike is a cross-platform mobile application built with **React Native (Expo Router)** and **TypeScript** for hikers to plan hikes, record field observations, track GPS routes, monitor live weather, and synchronize hike data across devices.
 
-## Get started
+## 🚀 Key Features
 
-1. Install dependencies
+- **Hike Management (CRUD)**: Plan hikes with full validation (Name, Location, Date, Parking, Length, Difficulty, Description, plus 13 custom fields).
+- **Field Observations**: Record multiple observations per hike with timestamps, comments, photos, trail condition, wildlife, and vegetation.
+- **Search & Filter**: Instant name search and multi-criteria advanced filter (Location, Length, Date, Difficulty).
+- **Interactive Maps & GPS Tracking**: Single international standard map tile layer (**CartoDB Voyager**) with live GPS location tracking and route polylines.
+- **Live Weather Forecast**: Real-time 5-day weather forecast integration via Open-Meteo REST API.
+- **Trail Safety SOS**: Instant GPS coordinates broadcast via SMS and Emergency Contact dialing.
+- **Local Persistence**: Built-in SQLite database engine with WAL mode (`expo-sqlite`).
+- **Cloud Synchronization**: Real-time cross-device sync via Firebase Realtime Database API.
+- **Dual Language (i18n)**: English (Default) and Vietnamese language support.
 
+## 🛠️ Tech Stack
+
+- **Framework**: React Native (Expo SDK 57, Expo Router)
+- **Language**: TypeScript (Strict Mode)
+- **Local Database**: SQLite (`expo-sqlite`)
+- **Cloud Backend**: Firebase Realtime Database API
+- **Location Services**: `expo-location`
+- **UI Components**: SF-Symbols vector line glyphs, glassmorphism design system
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (>= 18)
+- npm / npx
+- iOS Simulator (macOS) or Android Emulator
+
+### Installation & Execution
+
+1. Clone the repository and install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+2. Run on both iOS Simulator and Android Emulator simultaneously:
    ```bash
-   npx expo start
+   npm run dev:both
+   ```
+   *Alternative short command*:
+   ```bash
+   npm run dual
    ```
 
-In the output, you'll find options to open the app in a
+3. Code quality and unit tests:
+   ```bash
+   npm run typecheck
+   npx eslint .
+   node --experimental-strip-types src/lib/health.check.ts
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 📄 License
 
-You can start developing by editing the files inside the **src/app** directory. The tabs themselves live under `src/app/(tabs)/`. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## What's preconfigured
-
-- **HeroUI Native** (`heroui-native`) wrapped in `HeroUINativeProvider` and `GestureHandlerRootView` in `src/app/_layout.tsx`
-- **Uniwind** + **Tailwind CSS** wired through `metro.config.js` and `src/global.css`
-- All HeroUI Native mandatory peer dependencies: `react-native-reanimated`, `react-native-gesture-handler`, `react-native-worklets`, `react-native-safe-area-context`, `react-native-svg`, `react-native-screens`
-- `@gorhom/bottom-sheet` for bottom-sheet UIs
-- `@expo/vector-icons` (Ionicons) for tab bar icons
-- TypeScript with `strict: true` and `@/*` path alias to `./src/*`
-- React Compiler enabled
-
-## Learn more
-
-- [HeroUI Native components](https://heroui.com/docs/native) — full component reference
-- [Expo documentation](https://docs.expo.dev/) — Expo fundamentals and guides
-- [Uniwind documentation](https://docs.uniwind.dev) — Tailwind for React Native
-- [Expo Router](https://docs.expo.dev/router/introduction) — file-based routing
+Academic Coursework Project for Greenwich University.

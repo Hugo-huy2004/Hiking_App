@@ -1,21 +1,30 @@
 {
   "expo": {
-    "name": "hugohiking",
+    "name": "MHike App",
     "slug": "hugohiking",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "heroui-native-app",
+    "scheme": "com.legiahu.mhike",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "icon": "./assets/images/icon.png"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#1C1C1E"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ]
     },
     "plugins": [
       "expo-router",
@@ -28,7 +37,23 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-status-bar"
+      "expo-status-bar",
+      "expo-system-ui",
+      "expo-sqlite",
+      "@react-native-community/datetimepicker",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "M-Hike cần quyền vào thư viện ảnh để bạn đính ảnh cho chuyến đi và ghi chú thực địa.",
+          "cameraPermission": "M-Hike cần quyền camera để bạn chụp ảnh ngay trên đường mòn."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "M-Hike dùng vị trí của bạn để tự điền địa điểm và ghim chuyến đi lên bản đồ."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

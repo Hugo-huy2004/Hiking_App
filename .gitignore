@@ -42,3 +42,9 @@ yarn-error.*
 # Generated native folders
 /ios
 /android
+
+# IDE
+.idea/
+
+# Native env (Expo tự nạp .env, tiền tố EXPO_PUBLIC_ mới lộ ra bundle)
+.env
