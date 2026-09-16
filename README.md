@@ -1,140 +1,37 @@
-# M-Hike Application - Coursework Submission
+M-Hike ⛰️
+M-Hike là ứng dụng di động đi bộ đường dài (hiking) đa nền tảng dành cho iOS và Android. Giữa rừng sâu hay đồi núi khi điện thoại mất kết nối mạng – đó lại là lúc bạn cần đến bản đồ và thông tin hành trình nhất. M-Hike được xây dựng với nguyên tắc lõi: mọi thứ phải hoạt động hoàn hảo khi không có mạng, và tự động đồng bộ (sync) ngay khi có Internet trở lại.
 
-## Student Information
+🛠 Các Công Nghệ & Kỹ Thuật Cốt Lõi
+M-Hike được phát triển dựa trên các công nghệ và giải pháp hiện đại nhằm tối ưu hóa trải nghiệm Offline-first:
 
-- **Student Name:** Le Gia Huy
-- **Student ID:** GCS230377
-- **Course Name:** Mobile Application Design and Development
-- **Course Code:** COMP1786
-- **Institution:** University of Greenwich (Vietnam)
+Core Framework: React Native & Expo (Cho phép build ứng dụng mượt mà trên cả hai nền tảng iOS/Android từ một codebase).
+Ngôn Ngữ: TypeScript (Kiểm soát kiểu dữ liệu chặt chẽ, hạn chế bug ở runtime).
+Cơ Sở Dữ Liệu Cục Bộ (Offline-first): SQLite (Lưu trữ toàn bộ dữ liệu người dùng, điểm đánh dấu, và lộ trình ngay trên thiết bị, đảm bảo app luôn dùng được khi không có WiFi/4G).
+Đồng Bộ Đám Mây (Cloud Backend): Firebase (Đảm nhiệm vai trò đồng bộ hóa hai chiều tự động khi thiết bị bắt được mạng trở lại, tránh mất mát dữ liệu).
+Bản Đồ & Định Vị: Leaflet (Tích hợp bản đồ trực quan, tối ưu hóa hiển thị route/địa điểm).
+API Thời Tiết: Open-Meteo (Tích hợp dữ liệu thời tiết theo thời gian thực để cảnh báo tình hình thời tiết tại điểm đi bộ).
+Native Modules: Tích hợp mã Java / Android thuần để xử lý các tác vụ yêu cầu can thiệp sâu vào hệ thống hoặc phần cứng thiết bị.
+🚀 Các Tính Năng Nổi Bật
+Kiến Trúc Offline-First Toàn Diện
 
----
+Lưu trữ dữ liệu chuyến đi cục bộ 100%. Mọi thao tác thêm, sửa, xóa nhật ký đều được ghi lại tức thời mà không bị gián đoạn loading mạng.
+Đồng Bộ Dữ Liệu Thông Minh (Cloud Sync)
 
-## Application Overview
+Hệ thống tự động phát hiện trạng thái kết nối mạng để "đẩy" (push) dữ liệu lên mây và "kéo" (pull) các bản ghi mới về máy, giúp lưu trữ an toàn trọn đời.
+Quản Lý Hành Trình (Hike Management)
 
-M-Hike is a comprehensive hiking management and safety application designed for outdoor enthusiasts, trail runners, and hikers. The application empowers users to plan hikes, log detailed field observations, track real-time GPS routes, receive live weather updates, and access emergency SOS signals.
+Lên lịch & Theo dõi: Quản lý danh sách các chuyến đi đã hoàn thành, đang diễn ra hoặc đã lên lịch.
+Yêu thích: Đánh dấu (bookmark) những cung đường đẹp để đi lại hoặc chia sẻ sau.
+Chi Tiết Báo Cáo Chuyến Đi (Hike Details)
 
-### Key Features
-- **Hike Management (CRUD):** Create, review, edit, search, and manage planned or completed hiking trips.
-- **Field Observations:** Record observations linked to specific hikes (wildlife, trail conditions, weather, photos, ratings, and comments) with automatic cascade deletion.
-- **Offline-First Storage:** Local SQLite database serves as the primary source of truth, enabling full app functionality without an active internet connection.
-- **Real-Time Cloud Synchronization:** Background synchronization with Firebase Realtime Database across multiple devices.
-- **Google Authentication:** Native Google Sign-In with real-time profile and avatar synchronization.
-- **Smart GPS Journey Tracking:** Record and replay walking paths, pace, elevation gain, and session phases (Warmup, Steady, Halfway, Final, Done).
-- **Personalized Training Plan:** Auto-generated training programs based on user BMI and WHO health guidelines.
-- **Emergency SOS Signal:** Real-time GPS coordinate extraction with one-tap SMS/Call dispatch to emergency contacts.
-- **Bilingual Interface (i18n):** Complete support for English (EN) and Vietnamese (VI).
+Theo dõi sát sao các chỉ số như: cấp độ khó của cung đường, độ dài quãng đường, và năng lượng (calo) ước tính cần thiết cho chuyến đi.
+Dự Báo Thời Tiết Trực Tiếp (Live Weather)
 
----
+Cập nhật tức thời thông tin thời tiết tại tọa độ dự định đến, giúp người dùng có sự chuẩn bị tốt nhất để tránh mưa bão hay nắng gắt.
+Hệ Thống Bản Đồ (Map & Navigation)
 
-## Repository Directory Structure
+Hiển thị trực quan cung đường và vị trí các điểm dừng chân trên bản đồ tích hợp, giúp điều hướng dễ dàng.
+Báo Động Khẩn Cấp (SOS / Emergency)
 
-This repository contains two distinct implementations of the M-Hike application:
-
-```
-COMP1786-Le_Gia_Huy_GCS230377/
-├── Android_Native_App/        # Native Android Application (Android Studio / Java)
-├── Mobile- React_Native/      # Cross-Platform Application (React Native / Expo SDK 57)
-└── README.md                  # Project Documentation & Execution Guide
-```
-
-### 1. Android_Native_App (Native Android Studio)
-- **Tech Stack:** Java, Android SDK, SQLite (SQLiteOpenHelper), Firebase Realtime Database, XML Layouts.
-- **Target Platform:** Android (API Level 24+).
-- **Description:** Traditional native Android application implementing Material Design, local SQLite persistence, custom adapters, and Firebase authentication.
-
-### 2. Mobile- React_Native (React Native & Expo)
-- **Tech Stack:** React Native (Expo SDK 57), TypeScript, SQLite (WAL Mode), Expo Router (File-based navigation), Leaflet Maps, Open-Meteo API.
-- **Target Platforms:** iOS and Android.
-- **Description:** Cross-platform application featuring Apple HIG design tokens, dark mode, skeleton loaders, custom hooks (useJourney), and error handling (ErrorBoundary).
-
----
-
-## How to Clone and Run
-
-### 1. Clone the Repository
-
-Open terminal or command prompt and run:
-
-```bash
-git clone https://github.com/Hugo-huy2004/COMP1786-Le_Gia_Huy_GCS230377.git
-cd COMP1786-Le_Gia_Huy_GCS230377
-```
-
----
-
-### 2. Running Mobile- React_Native (React Native / Expo)
-
-To run the cross-platform React Native app on iOS Simulator, Android Emulator, or a physical device:
-
-```bash
-# 1. Navigate to the React Native folder
-cd "Mobile- React_Native"
-
-# 2. Install dependencies
-npm install
-
-# 3. Start Expo development server
-npm run start
-```
-
-#### Running Options:
-- **Run on iOS Simulator:** Press `i` in the terminal or run `npm run ios`.
-- **Run on Android Emulator:** Press `a` in the terminal or run `npm run android`.
-- **Run on Both Devices Simultaneously (Dual Launch):**
-  ```bash
-  npm run dual
-  ```
-- **Run on Physical Device:** Scan the QR code in terminal using the Expo Go app (Android) or Camera App (iOS).
-
----
-
-### 3. Running Android_Native_App (Android Studio)
-
-To open and run the Native Java Android project:
-
-1. Open Android Studio.
-2. Click Open (or File > Open).
-3. Select the `Android_Native_App` folder inside the cloned repository directory.
-4. Allow Gradle to sync project dependencies (this may take a few minutes on first launch).
-5. Select an Android Virtual Device (AVD Emulator) or connect a physical Android device via USB.
-6. Click the Run button (or press Shift + F10).
-
----
-
-## Verification & Quality Assurance
-
-The React Native application includes built-in test suites and type safety checkers:
-
-```bash
-cd "Mobile- React_Native"
-
-# Run automated logic test suite (BMI, Haversine, GPS, Safety checks)
-npx tsx src/lib/health.check.ts
-
-# Run TypeScript type safety checker
-npm run typecheck
-```
-
----
-
-## Environment Configuration (.env)
-
-Environment configuration templates are provided in `.env.example`:
-
-```env
-EXPO_PUBLIC_API_BASE_URL=https://YOUR-PROJECT-default-rtdb.asia-southeast1.firebasedatabase.app
-EXPO_PUBLIC_GOOGLE_CLIENT_ID=your-google-web-client-id.apps.googleusercontent.com
-EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID=your-google-ios-client-id.apps.googleusercontent.com
-EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID=your-google-android-client-id.apps.googleusercontent.com
-EXPO_PUBLIC_AUTHOR=Le Gia Huy
-EXPO_PUBLIC_APP_VERSION=1.0.0
-```
-
----
-
-## Author
-
-**Le Gia Huy** (Student ID: GCS230377)  
-University of Greenwich (Vietnam)  
-Coursework Submission for COMP1786 - Mobile Application Design and Development.
+Nhanh chóng phát tín hiệu, lưu lại tọa độ định vị cuối cùng khi người dùng rơi vào tình trạng cần cứu hộ khẩn cấp.
+Lưu ý: Đây là mã nguồn ứng dụng di động. Để trải nghiệm nhanh trên web mà không cần cài đặt ứng dụng, vui lòng truy cập phiên bản trình duyệt tại: hiking.hugowishpax.studio
